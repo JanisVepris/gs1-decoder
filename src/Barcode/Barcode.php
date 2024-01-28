@@ -42,9 +42,9 @@ class Barcode
         return count($this->applicationIdentifiers);
     }
 
-    /** @return array<string, ApplicationIdentifierInterface> */
+    /** @return ApplicationIdentifierInterface[] */
     public function getAllIdentifiers(): array
     {
-        return $this->applicationIdentifiers;
+        return array_values($this->applicationIdentifiers);
     }
 }

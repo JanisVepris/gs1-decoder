@@ -76,9 +76,9 @@ class BarcodeTest extends TestCase
         ;
 
         static::assertEquals([
-            '01' => $mockIdentifier1,
-            '02' => $mockIdentifier2,
-            '03' => $mockIdentifier3,
+            $mockIdentifier1,
+            $mockIdentifier2,
+            $mockIdentifier3,
         ], $barcode->getAllIdentifiers());
     }
 }
