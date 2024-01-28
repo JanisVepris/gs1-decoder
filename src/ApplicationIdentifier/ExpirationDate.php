@@ -10,5 +10,5 @@ class ExpirationDate extends DateIdentifier
 {
     public const CODE = '17';
     protected string $code = self::CODE;
-    protected string $englishTitle = 'Production date';
+    protected string $englishTitle = 'Expiration date';
 }
