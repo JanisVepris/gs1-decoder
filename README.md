@@ -4,6 +4,7 @@ A simple library that decodes GS1 barcodes.
 
 ## Instalation
 
+This package requires PHP `^8.2`
 ```bash
 composer require janisvepris/gs1-decoder
 ```
@@ -73,12 +74,17 @@ class MyGtinIdentifier extends SimpleIdentifier
 }
 
 // Replace the default identifier class map with your own 
-$decoder = new Decoder([
+$decoder = new Decoder(new IdentifierMap([
     '01' => MyGtinIdentifier::class,
-]);
+]));
 
 // or add your own identifier class to the default map
 $decoder = new Decoder();
 $decoder->getIdentifierMap()
     ->addIdentifierClass('01', MyGtinIdentifier::class)
 ```
+
+---
+
+#### Note
+This package does not validate the barcode. It tries to decode it as is.
