@@ -15,6 +15,7 @@ final class IdentifierMap extends AbstractIdentifierMap
         $this->map = $map ?? [
             ApplicationIdentifier\Sscc::CODE => ApplicationIdentifier\Sscc::class,
             ApplicationIdentifier\Gtin::CODE => ApplicationIdentifier\Gtin::class,
+            ApplicationIdentifier\GtinTradeItems::CODE => ApplicationIdentifier\GtinTradeItems::class,
 
             ApplicationIdentifier\BatchOrLotNumber::CODE => ApplicationIdentifier\BatchOrLotNumber::class,
             ApplicationIdentifier\ProductionDate::CODE => ApplicationIdentifier\ProductionDate::class,

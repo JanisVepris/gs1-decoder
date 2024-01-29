@@ -19,7 +19,7 @@ class DecoderTest extends TestCase
     {
         $subject = new Decoder();
 
-        $input = '000000000000000000';
+        $input = '299000000000000000000';
 
         $result = $subject->decode($input);
 

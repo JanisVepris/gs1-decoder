@@ -7,6 +7,7 @@ namespace Janisvepris\Gs1Decoder\Test\Unit\IdentifierMap;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierInterface;
 use Janisvepris\Gs1Decoder\Exception\IdentifierMap\DuplicateIdentifierCodeException;
 use Janisvepris\Gs1Decoder\IdentifierMap\IdentifierMap;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -146,6 +147,10 @@ class IdentifierMapTest extends TestCase
 
         foreach ($declaredClasses as $className) {
             if (! is_subclass_of($className, ApplicationIdentifierInterface::class)) {
+                continue;
+            }
+
+            if (is_subclass_of($className, MockObject::class)) {
                 continue;
             }
 
