@@ -7,16 +7,15 @@ namespace Janisvepris\Gs1Decoder\Test\Unit\IdentifierMap;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierInterface;
 use Janisvepris\Gs1Decoder\Exception\IdentifierMap\DuplicateIdentifierCodeException;
 use Janisvepris\Gs1Decoder\IdentifierMap\IdentifierMap;
-use PHPUnit\Framework\MockObject\MockObject;
+use Janisvepris\Gs1Decoder\Util\AiFinder;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /** @covers IdentifierMap */
 class IdentifierMapTest extends TestCase
 {
     public function testAllIdentifiersAreInDefaultMap(): void
     {
-        $identifierClasses = $this->getIdentifierClasses(__DIR__.'/../../../src/ApplicationIdentifier/');
+        $identifierClasses = AiFinder::all();
         $identifierCount = count($identifierClasses);
 
         $subject = new IdentifierMap();
@@ -26,7 +25,7 @@ class IdentifierMapTest extends TestCase
             $identifier = new $identifierClass();
             static::assertTrue(
                 $subject->hasIdentifierClass($identifier->getCode()),
-                sprintf('Identifier class %s is not in default map', $identifierClass),
+                sprintf('Identifier class "%s" is not in default map', $identifierClass),
             );
         }
 
@@ -134,41 +133,5 @@ class IdentifierMapTest extends TestCase
 
         $subject->addIdentifierClass('11', 'Class\\String');
         $subject->addIdentifierClass('11', 'Class\\String2');
-    }
-
-    /** @return string[] */
-    private function getIdentifierClasses(string $directory): array
-    {
-        $children = [];
-
-        $phpFiles = glob($directory.'/*.php');
-
-        static::assertNotFalse($phpFiles, 'Failed to glob application identifier directory');
-
-        foreach ($phpFiles as $phpFile) {
-            include_once $phpFile;
-        }
-
-        $declaredClasses = get_declared_classes();
-
-        foreach ($declaredClasses as $className) {
-            if (!is_subclass_of($className, ApplicationIdentifierInterface::class)) {
-                continue;
-            }
-
-            if (is_subclass_of($className, MockObject::class)) {
-                continue;
-            }
-
-            $reflection = new ReflectionClass($className);
-
-            if ($reflection->isAbstract() || $reflection->isInterface()) {
-                continue;
-            }
-
-            $children[] = $className;
-        }
-
-        return $children;
     }
 }
