@@ -16,6 +16,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\Sscc::CODE => ApplicationIdentifier\Sscc::class,
             ApplicationIdentifier\Gtin::CODE => ApplicationIdentifier\Gtin::class,
 
+            ApplicationIdentifier\BatchOrLotNumber::CODE => ApplicationIdentifier\BatchOrLotNumber::class,
             ApplicationIdentifier\ProductionDate::CODE => ApplicationIdentifier\ProductionDate::class,
             ApplicationIdentifier\ExpirationDate::CODE => ApplicationIdentifier\ExpirationDate::class,
 
