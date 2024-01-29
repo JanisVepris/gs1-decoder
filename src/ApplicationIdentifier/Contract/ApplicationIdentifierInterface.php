@@ -20,6 +20,13 @@ interface ApplicationIdentifierInterface
 
     public function getLength(): int;
 
-    /** @return array<string, mixed> */
+    /**
+     * @return array{
+     *     code: string,
+     *     value: float|string,
+     *     rawValue: string,
+     *     englishTitle: string,
+     * }
+     */
     public function toArray(): array;
 }

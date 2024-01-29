@@ -39,6 +39,4 @@ abstract class SimpleIdentifier extends BaseIdentifier
     {
         return $this->code;
     }
-
-    // @return array<string, string>
 }

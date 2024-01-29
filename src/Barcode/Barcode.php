@@ -47,4 +47,20 @@ class Barcode
     {
         return array_values($this->applicationIdentifiers);
     }
+
+    /**
+     * @return array{
+     *     'barcode': string,
+     *     'identifiers': array<string, mixed>,
+     * }  */
+    public function toArray(): array
+    {
+        return [
+            'barcode' => $this->rawBarcode,
+            'identifiers' => array_map(
+                fn (ApplicationIdentifierInterface $identifier) => $identifier->toArray(),
+                $this->getAllIdentifiers(),
+            ),
+        ];
+    }
 }

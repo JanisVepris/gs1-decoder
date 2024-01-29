@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Janisvepris\Gs1Decoder\ApplicationIdentifier\Abstract;
 
+use DateTime;
+use DateTimeInterface;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierInterface;
 
 abstract class BaseIdentifier implements ApplicationIdentifierInterface
@@ -29,9 +31,15 @@ abstract class BaseIdentifier implements ApplicationIdentifierInterface
 
     public function toArray(): array
     {
+        $value = $this->getValue();
+
+        if ($value instanceof DateTime) {
+            $value = $value->format(DateTimeInterface::ATOM);
+        }
+
         return [
             'code' => $this->getCode(),
-            'value' => $this->getValue(),
+            'value' => $value,
             'rawValue' => $this->getRawValue(),
             'englishTitle' => $this->getEnglishTitle(),
         ];
