@@ -25,6 +25,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\SellByDate::CODE => ApplicationIdentifier\SellByDate::class,
             ApplicationIdentifier\ExpirationDate::CODE => ApplicationIdentifier\ExpirationDate::class,
 
+            ApplicationIdentifier\InternalProductVariant::CODE => ApplicationIdentifier\InternalProductVariant::class,
             ApplicationIdentifier\SerialNumber::CODE => ApplicationIdentifier\SerialNumber::class,
 
             ApplicationIdentifier\NetWeightKg::CODE => ApplicationIdentifier\NetWeightKg::class,
