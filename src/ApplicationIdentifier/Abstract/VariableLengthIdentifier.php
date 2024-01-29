@@ -28,6 +28,11 @@ abstract class VariableLengthIdentifier extends BaseIdentifier implements Variab
         return $this->minLength;
     }
 
+    public function getLength(): int
+    {
+        return $this->getMaxLength();
+    }
+
     public function setValue(string $value): self
     {
         $this->setRawValue($value);

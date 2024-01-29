@@ -15,9 +15,4 @@ class SerialNumber extends VariableLengthIdentifier
     protected int $maxLength = 20;
 
     protected string $englishTitle = 'Serial number';
-
-    public function getLength(): int
-    {
-        return $this->getMaxLength();
-    }
 }

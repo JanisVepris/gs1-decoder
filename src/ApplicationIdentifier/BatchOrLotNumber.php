@@ -14,9 +14,4 @@ class BatchOrLotNumber extends VariableLengthIdentifier
     protected int $minLength = 1;
     protected int $maxLength = 20;
     protected string $englishTitle = 'Batch or lot number';
-
-    public function getLength(): int
-    {
-        return $this->getMaxLength();
-    }
 }
