@@ -13,6 +13,7 @@ final class IdentifierMap extends AbstractIdentifierMap
     public function __construct(?array $map = null)
     {
         $this->map = $map ?? [
+            ApplicationIdentifier\Sscc::CODE => ApplicationIdentifier\Sscc::class,
             ApplicationIdentifier\Gtin::CODE => ApplicationIdentifier\Gtin::class,
 
             ApplicationIdentifier\ProductionDate::CODE => ApplicationIdentifier\ProductionDate::class,
