@@ -38,6 +38,11 @@
             "@cs",
             "@stan",
             "@test"
+        ],
+        "build": [
+            "@cs-fix",
+            "@stan",
+            "@test"
         ]
     }
 }
