@@ -7,25 +7,41 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierInterface;
 use Janisvepris\Gs1Decoder\Util\AiFinder;
 
-const OUTPUT_FILE = __DIR__.'/../SupporterdIdentifiers.md';
+const OUTPUT_FILE = __DIR__.'/../docs/SupportedIdentifiers.md';
 
 $aiClasses = AiFinder::all();
 
-$lines = [];
+$content = <<<'CONTENT'
+# Supported application identifiers
+
+| Code | Title |
+| --- | --- |
+
+CONTENT;
+
+$rows = [];
 foreach ($aiClasses as $aiClass) {
     /** @var ApplicationIdentifierInterface $identifier */
     $identifier = new $aiClass();
 
-    $lines[] = sprintf(
-        "- `%s`\t%s\n",
-        $identifier->getCode(),
-        $identifier->getEnglishTitle(),
-    );
+    $rows[] = [
+        'code' => $identifier->getCode(),
+        'title' => $identifier->getEnglishTitle(),
+    ];
 }
 
-sort($lines);
+usort($rows, static function (array $a, array $b) {
+    return $a['code'] <=> $b['code'];
+});
 
-$content = "Supported application identifiers\n\n".implode('', $lines);
+foreach ($rows as $row) {
+    $content .= sprintf(
+        '| %s | %s |%s',
+        $row['code'],
+        $row['title'],
+        PHP_EOL,
+    );
+}
 
 $file = fopen(OUTPUT_FILE, 'w');
 
