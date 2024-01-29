@@ -1,3 +1,6 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/janisvepris/gs1-decoder/php.yml?style=flat-square)
+![GitHub Tag](https://img.shields.io/github/v/tag/janisvepris/gs1-decoder?style=flat-square)
+
 # GS1 Barcode decoder
 
 A simple library that decodes GS1 barcodes.
