@@ -21,6 +21,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\ProductionDate::CODE => ApplicationIdentifier\ProductionDate::class,
             ApplicationIdentifier\DueDate::CODE => ApplicationIdentifier\DueDate::class,
             ApplicationIdentifier\PackagingDate::CODE => ApplicationIdentifier\PackagingDate::class,
+            ApplicationIdentifier\BestBeforeDate::CODE => ApplicationIdentifier\BestBeforeDate::class,
             ApplicationIdentifier\ExpirationDate::CODE => ApplicationIdentifier\ExpirationDate::class,
 
             ApplicationIdentifier\SerialNumber::CODE => ApplicationIdentifier\SerialNumber::class,
