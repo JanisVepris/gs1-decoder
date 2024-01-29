@@ -11,6 +11,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
+/** @covers IdentifierMap */
 class IdentifierMapTest extends TestCase
 {
     public function testAllIdentifiersAreInDefaultMap(): void
