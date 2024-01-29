@@ -16,12 +16,13 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\Sscc::CODE => ApplicationIdentifier\Sscc::class,
             ApplicationIdentifier\Gtin::CODE => ApplicationIdentifier\Gtin::class,
             ApplicationIdentifier\GtinTradeItems::CODE => ApplicationIdentifier\GtinTradeItems::class,
-
             ApplicationIdentifier\BatchOrLotNumber::CODE => ApplicationIdentifier\BatchOrLotNumber::class,
+
             ApplicationIdentifier\ProductionDate::CODE => ApplicationIdentifier\ProductionDate::class,
             ApplicationIdentifier\DueDate::CODE => ApplicationIdentifier\DueDate::class,
             ApplicationIdentifier\PackagingDate::CODE => ApplicationIdentifier\PackagingDate::class,
             ApplicationIdentifier\BestBeforeDate::CODE => ApplicationIdentifier\BestBeforeDate::class,
+            ApplicationIdentifier\SellByDate::CODE => ApplicationIdentifier\SellByDate::class,
             ApplicationIdentifier\ExpirationDate::CODE => ApplicationIdentifier\ExpirationDate::class,
 
             ApplicationIdentifier\SerialNumber::CODE => ApplicationIdentifier\SerialNumber::class,
