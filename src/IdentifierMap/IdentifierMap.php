@@ -27,6 +27,7 @@ final class IdentifierMap extends AbstractIdentifierMap
 
             ApplicationIdentifier\InternalProductVariant::CODE => ApplicationIdentifier\InternalProductVariant::class,
             ApplicationIdentifier\SerialNumber::CODE => ApplicationIdentifier\SerialNumber::class,
+            ApplicationIdentifier\ConsumerProductVariant::CODE => ApplicationIdentifier\ConsumerProductVariant::class,
 
             ApplicationIdentifier\NetWeightKg::CODE => ApplicationIdentifier\NetWeightKg::class,
             ApplicationIdentifier\NetWeightPounds::CODE => ApplicationIdentifier\NetWeightPounds::class,
