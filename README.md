@@ -4,6 +4,7 @@
 # GS1 Barcode decoder
 
 A simple library that decodes GS1 barcodes.
+For a full list of supported application identifiers that ship with this package, see [supported identifiers](SupporterdIdentifiers.md).
 
 ## Instalation
 
