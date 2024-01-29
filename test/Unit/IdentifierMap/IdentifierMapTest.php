@@ -4,17 +4,29 @@ declare(strict_types=1);
 
 namespace Janisvepris\Gs1Decoder\Test\Unit\IdentifierMap;
 
+use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierInterface;
 use Janisvepris\Gs1Decoder\Exception\IdentifierMap\DuplicateIdentifierCodeException;
 use Janisvepris\Gs1Decoder\IdentifierMap\IdentifierMap;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 class IdentifierMapTest extends TestCase
 {
-    public function testInitializeWithDefaultMap(): void
+    public function testAllIdentifiersAreInDefaultMap(): void
     {
+        $identifierClasses = $this->getIdentifierClasses(__DIR__.'/../../../src/ApplicationIdentifier/');
+        $identifierCount = count($identifierClasses);
+
         $subject = new IdentifierMap();
 
-        static::assertSame(6, $subject->getElementCount());
+        foreach ($identifierClasses as $identifierClass) {
+            static::assertTrue(
+                $subject->hasIdentifierClass((new $identifierClass())->getCode()),
+                sprintf('Identifier class %s is not in default map', $identifierClass)
+            );
+        }
+
+        static::assertSame($identifierCount, $subject->getElementCount());
     }
 
     public function testInitializeWithCustomMap(): void
@@ -118,5 +130,34 @@ class IdentifierMapTest extends TestCase
 
         $subject->addIdentifierClass('11', 'Class\\String');
         $subject->addIdentifierClass('11', 'Class\\String2');
+    }
+
+    private function getIdentifierClasses(string $directory): array
+    {
+        $children = [];
+
+        $phpFiles = glob($directory . '/*.php');
+
+        foreach ($phpFiles as $phpFile) {
+            include_once $phpFile;
+        }
+
+        $declaredClasses = get_declared_classes();
+
+        foreach ($declaredClasses as $className) {
+            if (! is_subclass_of($className, ApplicationIdentifierInterface::class)) {
+                continue;
+            }
+
+            $reflection = new ReflectionClass($className);
+
+            if ($reflection->isAbstract() || $reflection->isInterface()) {
+                continue;
+            }
+
+            $children[] = $className;
+        }
+
+        return $children;
     }
 }
