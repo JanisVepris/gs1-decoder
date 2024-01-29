@@ -8,6 +8,7 @@ use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierI
 use Janisvepris\Gs1Decoder\Exception\IdentifierMap\DuplicateIdentifierCodeException;
 use Janisvepris\Gs1Decoder\IdentifierMap\IdentifierMap;
 use Janisvepris\Gs1Decoder\Util\AiFinder;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /** @covers IdentifierMap */
@@ -15,21 +16,24 @@ class IdentifierMapTest extends TestCase
 {
     public function testAllIdentifiersAreInDefaultMap(): void
     {
-        $identifierClasses = AiFinder::all();
-        $identifierCount = count($identifierClasses);
+        $identifierClasses = array_filter(
+            AiFinder::all(),
+            fn (string $classString) => !is_subclass_of($classString, MockObject::class),
+        );
 
         $subject = new IdentifierMap();
 
         foreach ($identifierClasses as $identifierClass) {
             /** @var ApplicationIdentifierInterface $identifier */
             $identifier = new $identifierClass();
+
             static::assertTrue(
                 $subject->hasIdentifierClass($identifier->getCode()),
                 sprintf('Identifier class "%s" is not in default map', $identifierClass),
             );
         }
 
-        static::assertSame($identifierCount, $subject->getElementCount());
+        static::assertSame(count($identifierClasses), $subject->getElementCount());
     }
 
     public function testInitializeWithCustomMap(): void
