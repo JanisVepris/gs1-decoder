@@ -22,9 +22,11 @@ class IdentifierMapTest extends TestCase
         $subject = new IdentifierMap();
 
         foreach ($identifierClasses as $identifierClass) {
+            /** @var ApplicationIdentifierInterface $identifier */
+            $identifier = new $identifierClass();
             static::assertTrue(
-                $subject->hasIdentifierClass((new $identifierClass())->getCode()),
-                sprintf('Identifier class %s is not in default map', $identifierClass)
+                $subject->hasIdentifierClass($identifier->getCode()),
+                sprintf('Identifier class %s is not in default map', $identifierClass),
             );
         }
 
@@ -134,11 +136,14 @@ class IdentifierMapTest extends TestCase
         $subject->addIdentifierClass('11', 'Class\\String2');
     }
 
+    /** @return string[] */
     private function getIdentifierClasses(string $directory): array
     {
         $children = [];
 
-        $phpFiles = glob($directory . '/*.php');
+        $phpFiles = glob($directory.'/*.php');
+
+        static::assertNotFalse($phpFiles, 'Failed to glob application identifier directory');
 
         foreach ($phpFiles as $phpFile) {
             include_once $phpFile;
@@ -147,7 +152,7 @@ class IdentifierMapTest extends TestCase
         $declaredClasses = get_declared_classes();
 
         foreach ($declaredClasses as $className) {
-            if (! is_subclass_of($className, ApplicationIdentifierInterface::class)) {
+            if (!is_subclass_of($className, ApplicationIdentifierInterface::class)) {
                 continue;
             }
 
