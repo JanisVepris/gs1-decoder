@@ -30,7 +30,7 @@ abstract class DateIdentifier extends BaseIdentifier implements DateIdentifierIn
 
         $value = DateTime::createFromFormat('ymd', $value);
 
-        if (false === $value) {
+        if ($value === false) {
             throw DateIdentifierException::couldNotParseDateIdentifier($this->getCode(), $this->getRawValue());
         }
 

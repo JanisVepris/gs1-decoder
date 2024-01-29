@@ -19,7 +19,7 @@ class AiFinder
 
         $phpFiles = glob(self::APPLICATION_IDENTIFIER_DIR.'/*.php');
 
-        if (false === $phpFiles) {
+        if ($phpFiles === false) {
             throw new Gs1DecoderException('Failed to glob application identifier directory');
         }
 

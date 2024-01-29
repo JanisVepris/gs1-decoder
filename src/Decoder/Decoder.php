@@ -32,7 +32,7 @@ class Decoder
         while (strlen($barcode) > 0) {
             $identifier = $this->findNextIdentifier($barcode);
 
-            if (null === $identifier) {
+            if ($identifier === null) {
                 break;
             }
 
