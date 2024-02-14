@@ -32,6 +32,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\NetWeightKg::CODE => ApplicationIdentifier\NetWeightKg::class,
             ApplicationIdentifier\NetWeightPounds::CODE => ApplicationIdentifier\NetWeightPounds::class,
             ApplicationIdentifier\GrossWeightKg::CODE => ApplicationIdentifier\GrossWeightKg::class,
+            ApplicationIdentifier\GrossWeightPounds::CODE => ApplicationIdentifier\GrossWeightPounds::class,
         ];
     }
 }
