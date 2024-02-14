@@ -35,6 +35,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\GrossWeightPounds::CODE => ApplicationIdentifier\GrossWeightPounds::class,
 
             ApplicationIdentifier\OrderNumber::CODE => ApplicationIdentifier\OrderNumber::class,
+            ApplicationIdentifier\Gsin::CODE => ApplicationIdentifier\Gsin::class,
         ];
     }
 }
