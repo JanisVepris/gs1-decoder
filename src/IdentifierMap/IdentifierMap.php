@@ -44,6 +44,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\ShipForGln::CODE => ApplicationIdentifier\ShipForGln::class,
             ApplicationIdentifier\PhysicalLocationGln::CODE => ApplicationIdentifier\PhysicalLocationGln::class,
             ApplicationIdentifier\InvoicingPartyGln::CODE => ApplicationIdentifier\InvoicingPartyGln::class,
+            ApplicationIdentifier\ProductionOrServiceGln::CODE => ApplicationIdentifier\ProductionOrServiceGln::class,
         ];
     }
 }
