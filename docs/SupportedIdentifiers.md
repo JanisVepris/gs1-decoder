@@ -29,3 +29,4 @@
 | 414 | Identification of a physical location - Global Location Number (GLN) |
 | 415 | Global Location Number (GLN) of the invoicing party |
 | 416 | Global Location Number (GLN) of the production or service location |
+| 417 | Party Global Location Number (GLN) |
