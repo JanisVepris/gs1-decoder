@@ -30,3 +30,4 @@
 | 415 | Global Location Number (GLN) of the invoicing party |
 | 416 | Global Location Number (GLN) of the production or service location |
 | 417 | Party Global Location Number (GLN) |
+| 422 | Country of origin of a trade item |

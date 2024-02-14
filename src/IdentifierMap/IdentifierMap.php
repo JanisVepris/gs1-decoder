@@ -46,6 +46,8 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\InvoicingPartyGln::CODE => ApplicationIdentifier\InvoicingPartyGln::class,
             ApplicationIdentifier\ProductionOrServiceGln::CODE => ApplicationIdentifier\ProductionOrServiceGln::class,
             ApplicationIdentifier\PartyGln::CODE => ApplicationIdentifier\PartyGln::class,
+
+            ApplicationIdentifier\CountryOfOrigin::CODE => ApplicationIdentifier\CountryOfOrigin::class,
         ];
     }
 }
