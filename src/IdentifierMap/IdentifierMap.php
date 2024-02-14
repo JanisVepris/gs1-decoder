@@ -37,8 +37,10 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\OrderNumber::CODE => ApplicationIdentifier\OrderNumber::class,
             ApplicationIdentifier\Gsin::CODE => ApplicationIdentifier\Gsin::class,
             ApplicationIdentifier\RoutingCode::CODE => ApplicationIdentifier\RoutingCode::class,
+
             ApplicationIdentifier\ShipToGln::CODE => ApplicationIdentifier\ShipToGln::class,
             ApplicationIdentifier\BillToGln::CODE => ApplicationIdentifier\BillToGln::class,
+            ApplicationIdentifier\PurchasedFromGln::CODE => ApplicationIdentifier\PurchasedFromGln::class,
         ];
     }
 }
