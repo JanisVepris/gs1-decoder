@@ -1,5 +1,6 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/janisvepris/gs1-decoder/php.yml?style=flat-square)
 ![GitHub Tag](https://img.shields.io/github/v/tag/janisvepris/gs1-decoder?style=flat-square)
+[![codecov](https://codecov.io/gh/JanisVepris/gs1-decoder/graph/badge.svg?token=NNNCK69OIU)](https://codecov.io/gh/JanisVepris/gs1-decoder)
 
 # GS1 Barcode decoder
 
