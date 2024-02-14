@@ -48,6 +48,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\PartyGln::CODE => ApplicationIdentifier\PartyGln::class,
 
             ApplicationIdentifier\CountryOfOrigin::CODE => ApplicationIdentifier\CountryOfOrigin::class,
+            ApplicationIdentifier\CountryOfInitialProcessing::CODE => ApplicationIdentifier\CountryOfInitialProcessing::class,
         ];
     }
 }
