@@ -18,3 +18,5 @@
 | 310 | Net weight, KG |
 | 320 | Net weight, Pounds |
 | 330 | Gross weight, KG |
+| 340 | Gross weight, Pounds |
+| 400 | Order number |
