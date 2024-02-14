@@ -33,3 +33,4 @@
 | 422 | Country of origin of a trade item |
 | 423 | Country of initial processing |
 | 424 | Country of processing |
+| 425 | Country of disassembly |
