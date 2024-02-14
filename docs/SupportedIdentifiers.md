@@ -32,3 +32,4 @@
 | 417 | Party Global Location Number (GLN) |
 | 422 | Country of origin of a trade item |
 | 423 | Country of initial processing |
+| 424 | Country of processing |

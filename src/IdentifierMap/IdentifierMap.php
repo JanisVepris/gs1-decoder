@@ -49,6 +49,7 @@ final class IdentifierMap extends AbstractIdentifierMap
 
             ApplicationIdentifier\CountryOfOrigin::CODE => ApplicationIdentifier\CountryOfOrigin::class,
             ApplicationIdentifier\CountryOfInitialProcessing::CODE => ApplicationIdentifier\CountryOfInitialProcessing::class,
+            ApplicationIdentifier\CountryOfProcessing::CODE => ApplicationIdentifier\CountryOfProcessing::class,
         ];
     }
 }
