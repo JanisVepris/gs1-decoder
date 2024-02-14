@@ -17,3 +17,4 @@
 | 22 | Consumer product variant |
 | 310 | Net weight, KG |
 | 320 | Net weight, Pounds |
+| 330 | Gross weight, KG |
