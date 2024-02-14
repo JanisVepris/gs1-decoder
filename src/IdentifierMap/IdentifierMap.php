@@ -42,6 +42,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\BillToGln::CODE => ApplicationIdentifier\BillToGln::class,
             ApplicationIdentifier\PurchasedFromGln::CODE => ApplicationIdentifier\PurchasedFromGln::class,
             ApplicationIdentifier\ShipForGln::CODE => ApplicationIdentifier\ShipForGln::class,
+            ApplicationIdentifier\PhysicalLocationGln::CODE => ApplicationIdentifier\PhysicalLocationGln::class,
         ];
     }
 }
