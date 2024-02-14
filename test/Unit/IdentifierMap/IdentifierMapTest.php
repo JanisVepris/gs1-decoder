@@ -11,7 +11,6 @@ use Janisvepris\Gs1Decoder\Util\AiFinder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/** @covers IdentifierMap */
 class IdentifierMapTest extends TestCase
 {
     public function testAllIdentifiersAreInDefaultMap(): void
