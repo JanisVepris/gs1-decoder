@@ -49,8 +49,6 @@ jobs:
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
-      env:
-        slug: JanisVepris/gs1-decoder
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
