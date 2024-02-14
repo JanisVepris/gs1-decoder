@@ -6,7 +6,7 @@ namespace Janisvepris\Gs1Decoder\Exception\Decoder;
 
 use Janisvepris\Gs1Decoder\Exception\Gs1DecoderException;
 
-class InvalidBarcodeException extends Gs1DecoderException
+class NotEnoughCharactersException extends Gs1DecoderException
 {
     public static function notEnoughCharacters(string $identifierCode): self
     {

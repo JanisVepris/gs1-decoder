@@ -8,7 +8,8 @@ use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\ApplicationIdentifierI
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\DecimalIdentifierInterface;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Contract\VariableLengthIdentifierInterface;
 use Janisvepris\Gs1Decoder\Barcode\Barcode;
-use Janisvepris\Gs1Decoder\Exception\Decoder\InvalidBarcodeException;
+use Janisvepris\Gs1Decoder\Exception\Decoder\NotEnoughCharactersException;
+use Janisvepris\Gs1Decoder\Exception\Gs1DecoderException;
 use Janisvepris\Gs1Decoder\IdentifierMap\Contract\IdentifierMapInterface;
 use Janisvepris\Gs1Decoder\IdentifierMap\IdentifierMap;
 use Janisvepris\Gs1Decoder\Util\Str;
@@ -37,14 +38,29 @@ class Decoder
             }
 
             if ($identifier instanceof DecimalIdentifierInterface) {
+                if (strlen($barcode) === 0) {
+                    break;
+                }
+
                 $decimalPosition = (int) Str::shift($barcode);
                 $identifier->setDecimalPosition($decimalPosition);
             }
 
-            $value = $this->getIdentifierValue($identifier, $barcode);
-            $identifier->setValue($value);
+            try {
+                $value = $this->getIdentifierValue($identifier, $barcode);
 
-            $parsedBarcode->addIdentifier($identifier);
+                if ($value === '') {
+                    continue;
+                }
+
+                $identifier->setValue($value);
+
+                $parsedBarcode->addIdentifier($identifier);
+            } catch (NotEnoughCharactersException) {
+                break;
+            } catch (Gs1DecoderException) {
+                continue;
+            }
         }
 
         return $parsedBarcode;
@@ -95,11 +111,11 @@ class Decoder
 
         if ($identifier instanceof VariableLengthIdentifierInterface
             && strlen($barcode) < $identifier->getMinLength()) {
-            throw InvalidBarcodeException::notEnoughCharacters($identifier->getCode());
+            throw NotEnoughCharactersException::notEnoughCharacters($identifier->getCode());
         }
         if (!$identifier instanceof VariableLengthIdentifierInterface
             && strlen($barcode) < $identifier->getLength()) {
-            throw InvalidBarcodeException::notEnoughCharacters($identifier->getCode());
+            throw NotEnoughCharactersException::notEnoughCharacters($identifier->getCode());
         }
 
         while (strlen($barcode) > 0) {

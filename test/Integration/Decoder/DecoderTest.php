@@ -6,10 +6,13 @@ namespace Janisvepris\Gs1Decoder\Test\Integration\Decoder;
 
 use DateTime;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Abstract\DateIdentifier;
+use Janisvepris\Gs1Decoder\ApplicationIdentifier\BestBeforeDate;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\ExpirationDate;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Gtin;
+use Janisvepris\Gs1Decoder\ApplicationIdentifier\GtinTradeItems;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\NetWeightKg;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\SerialNumber;
+use Janisvepris\Gs1Decoder\ApplicationIdentifier\Sscc;
 use Janisvepris\Gs1Decoder\Decoder\Decoder;
 use PHPUnit\Framework\TestCase;
 
@@ -151,5 +154,52 @@ class DecoderTest extends TestCase
                 'expected' => DateTime::createFromFormat('Y-m-d H:i:s', '2021-01-31 23:59:59'),
             ],
         ];
+    }
+
+    public function testIdentifierIgnoredWhenNotEnoughCharacters(): void
+    {
+        $subject = new Decoder();
+
+        $input = GtinTradeItems::CODE.'98410843114508'.
+            BestBeforeDate::CODE.'250827'.
+            NetWeightKg::CODE.'3007426'.
+            Sscc::CODE.'123';
+
+        $result = $subject->decode($input);
+
+        static::assertSame($input, $result->getRawValue());
+        static::assertSame(3, $result->getIdentifierCount());
+        static::assertTrue($result->hasIdentifier(GtinTradeItems::CODE));
+        static::assertTrue($result->hasIdentifier(NetWeightKg::CODE));
+        static::assertTrue($result->hasIdentifier(BestBeforeDate::CODE));
+        static::assertFalse($result->hasIdentifier(Sscc::CODE));
+    }
+
+    public function testDecimalIdentifierIgnoredIfNoDecimalPointPosition(): void
+    {
+        $subject = new Decoder();
+
+        $input = Gtin::CODE.'98410843114508'.NetWeightKg::CODE;
+
+        $result = $subject->decode($input);
+
+        static::assertSame($input, $result->getRawValue());
+        static::assertSame(1, $result->getIdentifierCount());
+        static::assertTrue($result->hasIdentifier(Gtin::CODE));
+        static::assertFalse($result->hasIdentifier(NetWeightKg::CODE));
+    }
+
+    public function testIdentifierIgnoredIfNoValue(): void
+    {
+        $subject = new Decoder();
+
+        $input = Gtin::CODE.'98410843114508'.GtinTradeItems::CODE;
+
+        $result = $subject->decode($input);
+
+        static::assertSame($input, $result->getRawValue());
+        static::assertSame(1, $result->getIdentifierCount());
+        static::assertTrue($result->hasIdentifier(Gtin::CODE));
+        static::assertFalse($result->hasIdentifier(GtinTradeItems::CODE));
     }
 }
