@@ -27,3 +27,4 @@
 | 412 | Purchased from Global Location Number (GLN) |
 | 413 | Ship for / Deliver for - Forward to Global Location Number (GLN) |
 | 414 | Identification of a physical location - Global Location Number (GLN) |
+| 415 | Global Location Number (GLN) of the invoicing party |
