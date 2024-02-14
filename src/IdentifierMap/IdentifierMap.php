@@ -38,6 +38,7 @@ final class IdentifierMap extends AbstractIdentifierMap
             ApplicationIdentifier\Gsin::CODE => ApplicationIdentifier\Gsin::class,
             ApplicationIdentifier\RoutingCode::CODE => ApplicationIdentifier\RoutingCode::class,
             ApplicationIdentifier\ShipToGln::CODE => ApplicationIdentifier\ShipToGln::class,
+            ApplicationIdentifier\BillToGln::CODE => ApplicationIdentifier\BillToGln::class,
         ];
     }
 }

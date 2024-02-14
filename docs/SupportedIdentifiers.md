@@ -23,3 +23,4 @@
 | 402 | Global Shipment Identification Number (GSIN) |
 | 403 | Routing code (Route) |
 | 410 | Ship to / Deliver to Global Location Number (GLN) |
+| 411 | Bill to / Invoice to Global Location Number (GLN) |
