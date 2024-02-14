@@ -202,4 +202,21 @@ class DecoderTest extends TestCase
         static::assertTrue($result->hasIdentifier(Gtin::CODE));
         static::assertFalse($result->hasIdentifier(GtinTradeItems::CODE));
     }
+
+    public function testInvalidDateIsIgnored(): void
+    {
+        $subject = new Decoder();
+
+        $input = Gtin::CODE.'98410843114508'.
+            BestBeforeDate::CODE.'SI9DRA'.
+            NetWeightKg::CODE.'3007426';
+
+        $result = $subject->decode($input);
+
+        static::assertSame($input, $result->getRawValue());
+        static::assertSame(2, $result->getIdentifierCount());
+        static::assertTrue($result->hasIdentifier(Gtin::CODE));
+        static::assertTrue($result->hasIdentifier(NetWeightKg::CODE));
+        static::assertFalse($result->hasIdentifier(BestBeforeDate::CODE));
+    }
 }
