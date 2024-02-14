@@ -21,3 +21,4 @@
 | 340 | Gross weight, Pounds |
 | 400 | Order number |
 | 402 | Global Shipment Identification Number (GSIN) |
+| 403 | Routing code (Route) |
