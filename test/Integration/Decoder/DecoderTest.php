@@ -160,10 +160,10 @@ class DecoderTest extends TestCase
     {
         $subject = new Decoder();
 
-        $input = GtinTradeItems::CODE.'98410843114508'.
-            BestBeforeDate::CODE.'250827'.
-            NetWeightKg::CODE.'3007426'.
-            Sscc::CODE.'123';
+        $input = GtinTradeItems::CODE.'98410843114508'
+            .BestBeforeDate::CODE.'250827'
+            .NetWeightKg::CODE.'3007426'
+            .Sscc::CODE.'123';
 
         $result = $subject->decode($input);
 
@@ -207,9 +207,9 @@ class DecoderTest extends TestCase
     {
         $subject = new Decoder();
 
-        $input = Gtin::CODE.'98410843114508'.
-            BestBeforeDate::CODE.'SI9DRA'.
-            NetWeightKg::CODE.'3007426';
+        $input = Gtin::CODE.'98410843114508'
+            .BestBeforeDate::CODE.'SI9DRA'
+            .NetWeightKg::CODE.'3007426';
 
         $result = $subject->decode($input);
 

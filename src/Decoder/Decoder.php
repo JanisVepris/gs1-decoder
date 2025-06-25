@@ -19,7 +19,7 @@ class Decoder
     private IdentifierMapInterface $identifierMap;
     private string $delimiter = '[FNC1]';
 
-    public function __construct(IdentifierMapInterface $identifierMap = null)
+    public function __construct(?IdentifierMapInterface $identifierMap = null)
     {
         $this->identifierMap = $identifierMap ?? new IdentifierMap();
     }

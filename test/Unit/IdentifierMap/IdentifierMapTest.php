@@ -38,7 +38,7 @@ class IdentifierMapTest extends TestCase
     public function testInitializeWithCustomMap(): void
     {
         $subject = new IdentifierMap([
-            '333' => 'Class\\String',
+            '333' => 'Class\String',
         ]);
 
         static::assertSame(1, $subject->getElementCount());
@@ -49,12 +49,12 @@ class IdentifierMapTest extends TestCase
     {
         $subject = new IdentifierMap([]);
 
-        $subject->addIdentifierClass('11', 'Class\\String');
+        $subject->addIdentifierClass('11', 'Class\String');
 
         static::assertSame(1, $subject->getElementCount());
         static::assertTrue($subject->hasIdentifierClass('11'));
 
-        $subject->addIdentifierClass('22', 'Class\\String');
+        $subject->addIdentifierClass('22', 'Class\String');
 
         static::assertSame(2, $subject->getElementCount());
         static::assertTrue($subject->hasIdentifierClass('22'));
@@ -63,24 +63,24 @@ class IdentifierMapTest extends TestCase
     public function testGetIdentifierClass(): void
     {
         $subject = new IdentifierMap([
-            '11' => 'Class\\String1',
-            '22' => 'Class\\String2',
+            '11' => 'Class\String1',
+            '22' => 'Class\String2',
         ]);
 
         $result = $subject->getIdentifierClass('11');
 
-        static::assertSame('Class\\String1', $result);
+        static::assertSame('Class\String1', $result);
 
         $result = $subject->getIdentifierClass('22');
 
-        static::assertSame('Class\\String2', $result);
+        static::assertSame('Class\String2', $result);
     }
 
     public function testRemoveIdentifierClass(): void
     {
         $subject = new IdentifierMap([
-            '11' => 'Class\\String1',
-            '22' => 'Class\\String2',
+            '11' => 'Class\String1',
+            '22' => 'Class\String2',
         ]);
 
         $subject->removeIdentifierClass('11');
@@ -97,9 +97,9 @@ class IdentifierMapTest extends TestCase
     public function testHasIdentifierClassMethod(): void
     {
         $map = [
-            '11' => 'Class\\String',
-            '22' => 'Class\\String',
-            '33' => 'Class\\String',
+            '11' => 'Class\String',
+            '22' => 'Class\String',
+            '33' => 'Class\String',
         ];
 
         $subject = new IdentifierMap($map);
@@ -114,16 +114,16 @@ class IdentifierMapTest extends TestCase
     public function testGetElementCount(): void
     {
         $map = [
-            '11' => 'Class\\String',
-            '22' => 'Class\\String',
-            '33' => 'Class\\String',
+            '11' => 'Class\String',
+            '22' => 'Class\String',
+            '33' => 'Class\String',
         ];
 
         $subject = new IdentifierMap($map);
 
         static::assertSame(3, $subject->getElementCount());
 
-        $subject->addIdentifierClass('44', 'Class\\String');
+        $subject->addIdentifierClass('44', 'Class\String');
 
         static::assertSame(4, $subject->getElementCount());
     }
@@ -134,7 +134,7 @@ class IdentifierMapTest extends TestCase
 
         static::expectException(DuplicateIdentifierCodeException::class);
 
-        $subject->addIdentifierClass('11', 'Class\\String');
-        $subject->addIdentifierClass('11', 'Class\\String2');
+        $subject->addIdentifierClass('11', 'Class\String');
+        $subject->addIdentifierClass('11', 'Class\String2');
     }
 }
