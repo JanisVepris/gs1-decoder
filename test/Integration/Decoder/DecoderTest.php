@@ -14,6 +14,7 @@ use Janisvepris\Gs1Decoder\ApplicationIdentifier\NetWeightKg;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\SerialNumber;
 use Janisvepris\Gs1Decoder\ApplicationIdentifier\Sscc;
 use Janisvepris\Gs1Decoder\Decoder\Decoder;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DecoderTest extends TestCase
@@ -82,7 +83,7 @@ class DecoderTest extends TestCase
         static::assertInstanceOf(DateTime::class, $expirationDateIdentifier->getValue());
     }
 
-    /** @dataProvider dpTestVariableLengthIdentifier */
+    #[DataProvider('dpTestVariableLengthIdentifier')]
     public function testVariableLengthIdentifier(string $input, string $expected): void
     {
         $subject = new Decoder();
@@ -118,7 +119,7 @@ class DecoderTest extends TestCase
         ];
     }
 
-    /** @dataProvider dpTestDateIdentifier */
+    #[DataProvider('dpTestDateIdentifier')]
     public function testDateIdentifier(string $input, DateTime $expected): void
     {
         $subject = new Decoder();
