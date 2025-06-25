@@ -5,6 +5,7 @@
 | 00 | Serial Shipping Container Code (SSCC) |
 | 01 | Global Trade Item Number (GTIN) |
 | 02 | Global Trade Item Number (GTIN) of contained trade items |
+| 03 | Identification of a Made-to-Order (MtO) trade item (GTIN) |
 | 10 | Batch or lot number |
 | 11 | Production date |
 | 12 | Due date |
