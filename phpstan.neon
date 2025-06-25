@@ -5,7 +5,6 @@ parameters:
     editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
     editorUrlTitle: '%%file%%:%%line%%'
     tmpDir: .cache/phpstan
-    checkAlwaysTrueStrictComparison: true
     checkExplicitMixedMissingReturn: true
     reportAlwaysTrueInLastCondition: true
     paths:
@@ -14,4 +13,4 @@ parameters:
         - script/
     excludePaths:
         - vendor/
-        - phpstan/
+        - .cache/ (?)
